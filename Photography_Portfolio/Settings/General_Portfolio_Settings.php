@@ -39,6 +39,7 @@ class General_Portfolio_Settings {
                     'portfolio_layout'        => 'masonry-hovercard',
                     'single_portfolio_layout' => 'masonry',
                     'archive_description'     => 'disable',
+                    'archive_category'        => 'disable',
                     'portfolio_subtitles'     => 'only_subtitles',
                     'popup_gallery'           => 'photoswipe',
 
@@ -119,9 +120,9 @@ class General_Portfolio_Settings {
                 'type'    => 'select',
                 'default' => 'all',
                 'options' => [
-                    'all'                 => esc_html__( 'Show all Portfolio entries', 'photography-portfolio' ),
-                    'phort_post_category' => esc_html__( 'Show a Portfolio category', 'photography-portfolio' ),
-                    'phort_post'          => esc_html__( 'Show a single Portfolio entry', 'photography-portfolio' ),
+                    'all'                       => esc_html__( 'Show all Portfolio entries', 'photography-portfolio' ),
+                    'phort_post_category'       => esc_html__( 'Show a Portfolio category', 'photography-portfolio' ),
+                    'phort_post'                => esc_html__( 'Show a single Portfolio entry', 'photography-portfolio' ),
                 ],
             ];
 
@@ -143,6 +144,17 @@ class General_Portfolio_Settings {
                 'desc'             => $setting_requires_homepage,
             ];
         }
+
+	    $settings[] = [
+		    'id'      => 'archive_category',
+		    'name'    => esc_html__( 'Show Category Navigation', 'photography-portfolio' ),
+		    'type'    => 'select',
+		    'default' => $this->defaults['archive_category'],
+		    'options' => [
+			    'disable' => esc_html__( 'Disable', 'photography-portfolio' ),
+			    'enable'  => esc_html__( 'Enable', 'photography-portfolio' ),
+		    ],
+	    ];
 
         /**
          *

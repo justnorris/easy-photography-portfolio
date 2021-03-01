@@ -8,6 +8,25 @@
 
 <?php phort_get_template( 'archive/description' ); ?>
 
+<?php if ( phort_get_option( 'archive_category' ) === 'enable' ): ?>
+<div <?php phort_class( 'PP_Archive_Filter' ); ?> >
+    <div <?php phort_class( 'PP_Archive_Filter_Categories' ); ?> >
+		         <?php if ( count( get_terms( 'phort_post_category' ) ) !== 0 ): ?>
+
+                     <span>
+                        <?php esc_html_e( 'Categories:', 'photography-portfolio' ); ?>
+                     </span>
+
+			         <?php foreach ( get_terms( 'phort_post_category' ) as $taxonomy ): ?>
+                         <a href="<?php echo esc_url( get_category_link( $taxonomy->term_id ) ); ?>">
+                             <?php echo esc_html( $taxonomy->name ); ?>
+                         </a>
+			         <?php endforeach; ?>
+		         <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
+
 <div <?php phort_class( 'PP_Archive_Container' ); ?>>
 
 	<?php do_action( 'phort/archive/loop/start' ); ?>
